@@ -62,8 +62,12 @@ rem oLink.WindowStyle = "1"
 rem oLink.Description = "知云文献翻译"
 rem oLink.Save
 
-:: 示例vbs，原本计划1.从vbs执行cmd命令来重命名快捷方式,结果是代码中中文无法被使用，且cmd方式无法修改快捷方式的描述文字
+:: 示例vbs，原本计划1.从vbs执行cmd命令或者调用FileSystemObject来重命名快捷方式,结果是代码中中文无法被使用，且cmd方式无法修改快捷方式的描述文字
 rem oWS.Run "cmd /c rename tmp527.lnk " & fname
+
+rem fname = "知云文献翻译"
+rem Set Fso = WScript.CreateObject("Scripting.FileSystemObject")
+rem Fso.MoveFile "C:\Users\Daibu\Desktop\name.lnk", fname & ".txt"
 
 
 :: 示例vbs，原本计划2.以为Shell.Application可以应对unicode字符(不过该方式可以修改shortcut对象的全部属性),结果是只要在vbs中的中文路径名称都会乱码(表现为路径无法读-引用搜索、无法写-重命名)
