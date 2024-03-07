@@ -1,0 +1,101 @@
+{
+  "version": "1.0",
+  "rules": [
+    {
+      "description": "禁用b站首页",
+      "origin": "https://www.bilibili.com/($|\\?.*)",
+      "exclude": "",
+      "methods": [],
+      "types": [],
+      "target": "https://search.bilibili.com/",
+      "example": "",
+      "enable": true,
+      "process": "",
+      "_originRe": {}
+    },
+    {
+      "description": "去除b站网址多余参数(保留搜索keyword或视频分p)丨无效:①inspect network发现b站网页中涉及很多ajax发出的各样的url请求,在inspect console中看到由于规则不当很多被阻止了,②urlredirect插件是劫持浏览器发出的请求(此时浏览器会自动修改地址栏url文本,),但是b站在加载完页面后会通过js脚本再次改动当前地址栏url文本,,简单来说在b站页面点击某个视频时发出的是url_a请求并切换到到该视频页面,同时将该视频页面的地址栏文本设为url_b,该插件能拦截并重定向底层的非可视的url_a,但是无法作用于外层的可视的url_b",
+      "origin": "^https?:\\/(.*).bilibili.com\\/(.*\\?).*(keyword=.*?|p=.*?)(&.*|$)",
+      "exclude": "",
+      "methods": [],
+      "types": [],
+      "target": "https://$1.bilibili.com/$2$3",
+      "example": "https://search.bilibili.com/all?vt=47909255&keyword=kk&from_source=webtop_search&spm_id_from=666.4&search_source=5",
+      "enable": false,
+      "process": "",
+      "_originRe": {}
+    },
+    {
+      "description": "去除b站网址多余参数(去除spm_id_from,from=search,seid等)",
+      "origin": "^https?:\\/(.*).bilibili.com\\/(.*)\\?.*(from_source|spm_id_|vd_source).*",
+      "exclude": "",
+      "methods": [],
+      "types": [],
+      "target": "https://$1.bilibili.com/$2",
+      "example": "https://www.bilibili.com/video/av79701149/?spm_id_&vd_source=313981ee1f662eb1e4e129593466992a",
+      "enable": false,
+      "process": "",
+      "_originRe": {}
+    },
+    {
+      "description": "禁用b站",
+      "origin": ".*bilibili.com/.*",
+      "exclude": "",
+      "methods": [],
+      "types": [],
+      "target": "https://www.blocked.com",
+      "example": "https://www.bilibili.com",
+      "enable": true,
+      "process": "",
+      "_originRe": {}
+    },
+    {
+      "description": "禁用热榜",
+      "origin": ".*rebang.today/.*",
+      "exclude": "",
+      "methods": [],
+      "types": [],
+      "target": "https://www.blocked.com/",
+      "example": "",
+      "enable": true,
+      "process": "",
+      "_originRe": {}
+    },
+    {
+      "description": "禁用1",
+      "origin": ".*span\\w{2}ang.\\w+/.*",
+      "exclude": "",
+      "methods": [],
+      "types": [],
+      "target": "https://www.blocked.com/",
+      "example": "",
+      "enable": true,
+      "process": "",
+      "_originRe": {}
+    },
+    {
+      "description": "禁用2",
+      "origin": ".*porn.*.com/.*",
+      "exclude": "",
+      "methods": [],
+      "types": [],
+      "target": "https://www.blocked.com/",
+      "example": "",
+      "enable": true,
+      "process": "",
+      "_originRe": {}
+    },
+    {
+      "description": "禁用3",
+      "origin": ".*missa\\w.com/.*",
+      "exclude": "",
+      "methods": [],
+      "types": [],
+      "target": "https://www.blocked.com/",
+      "example": "",
+      "enable": true,
+      "process": "",
+      "_originRe": {}
+    }
+  ]
+}
